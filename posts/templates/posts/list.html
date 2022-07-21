@@ -1,0 +1,21 @@
+{% extends "posts/main.html" %}
+
+{% block title %}Posts list{% endblock %}
+
+{% block content %}
+    <h1>Existing posts</h1>
+
+    <ul>
+        {% for m in posts %}
+            {# <li><a href="/posts/posts_list/{{ m.id }}">{{ m.title }}</a></li> #}
+            <li><a href="{% url "posts:posts_details" m.id %}">{{ m.title}}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h1>Create a new post!</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="New post">
+    </form>
+{% endblock %} 

@@ -12,6 +12,12 @@ class Post(models.Model):
     null=True,
     blank=True)
 
+    def __str__(self):
+        return f"id:{self.id}, title={self.title}, content={self.content}"
+
 class Author(models.Model):
     nick = models.CharField(max_length=20, unique=True)
     email = models.CharField(max_length=30, unique=True)
+
+    def __str__(self):
+        return f"nick={self.nick}, email={self.email}"

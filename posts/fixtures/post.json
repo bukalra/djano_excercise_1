@@ -1,0 +1,57 @@
+[
+{
+    "model": "posts.post",
+    "pk": 1,
+    "fields": {
+        "title": "new post",
+        "content": "this is some content",
+        "created": "2022-07-20T18:26:11.315Z",
+        "modified": "2022-07-20T18:26:11.315Z",
+        "author_id": 1
+    }
+},
+{
+    "model": "posts.post",
+    "pk": 2,
+    "fields": {
+        "title": "second post",
+        "content": "this is some dummy content",
+        "created": "2022-07-20T18:26:31.924Z",
+        "modified": "2022-07-20T18:26:31.925Z",
+        "author_id": 1
+    }
+},
+{
+    "model": "posts.post",
+    "pk": 3,
+    "fields": {
+        "title": "darek",
+        "content": "this is some content",
+        "created": "2022-07-21T17:54:57.579Z",
+        "modified": "2022-07-21T17:54:57.579Z",
+        "author_id": null
+    }
+},
+{
+    "model": "posts.post",
+    "pk": 4,
+    "fields": {
+        "title": "another on",
+        "content": "another one content",
+        "created": "2022-07-21T18:58:17.777Z",
+        "modified": "2022-07-21T18:58:17.777Z",
+        "author_id": 1
+    }
+},
+{
+    "model": "posts.post",
+    "pk": 5,
+    "fields": {
+        "title": "last one",
+        "content": "contenct of the last one",
+        "created": "2022-07-21T18:58:45.806Z",
+        "modified": "2022-07-21T18:58:45.807Z",
+        "author_id": 2
+    }
+}
+]

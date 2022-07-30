@@ -7,8 +7,8 @@
 
     <ul>
         {% for m in posts %}
-            {# <li><a href="/posts/posts_list/{{ m.id }}">{{ m.title }}</a></li> #}
-            <li><a href="{% url "posts:posts_details" m.id %}">{{ m.title}}</a></li>
+            {# <li><a href="/posts/posts_list/{{ m.id }}"> {{ m }}</a></li> #}
+            <li><a href="{% url "posts:posts_details" m.id %}">{{ m }}</a></li>
         {% endfor %}
     </ul>
 

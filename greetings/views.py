@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render
 
 
@@ -5,6 +6,20 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 
-def greetings(request, name):
-    upper_name = f'Hello {name.capitalize()} !'
-    return HttpResponse(upper_name)
+def welcome(request):
+    return render(
+        request=request,
+        template_name="greetings/main.html",
+        context=None)   
+
+def contact(request):
+    return render(
+        request=request,
+        template_name="greetings/main.html",
+        context=None)
+
+def about(request):
+    return render(
+        request=request,
+        template_name="greetings/main.html",
+        context=None)

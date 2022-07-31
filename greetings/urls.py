@@ -1,7 +1,10 @@
 from django.contrib import admin
 from django.urls import path
-from .views import greetings
+
+from greetings.views import about, contact, welcome
 
 urlpatterns = [
-    path('<name>', greetings)
+    path('', welcome, name="welcome"),
+    path('about/', about, name="about"),
+    path('contact/', contact, name="contact"),
 ]

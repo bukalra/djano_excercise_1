@@ -119,5 +119,16 @@
         "created": "2022-07-19T18:39:47.749Z",
         "result": 11
     }
+},
+{
+    "model": "maths.math",
+    "pk": 12,
+    "fields": {
+        "operation": "add",
+        "a": 2,
+        "b": 2,
+        "created": "2022-08-19T18:39:47.749Z",
+        "result": 11
+    }
 }
 ]

@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from maths.models import Math, Result
 from maths.forms import ResultForm
+from django.core.paginator import Paginator
 
 def math(request):
     return HttpResponse("Tu będzie matma")
@@ -64,12 +65,15 @@ def div(request, a, b):
         context=c)  
 
 def maths_list(request):
-    maths = Math.objects.all()
-    return render(
-        request=request,
-        template_name="maths/list.html",
-        context={"maths": maths}
-    )
+   maths = Math.objects.all()
+   paginator = Paginator(maths, 5)
+   page_number = request.GET.get('page')
+   maths = paginator.get_page(page_number)
+   return render(
+       request=request,
+       template_name="maths/list.html",
+       context={"maths": maths}
+   )
 
 def math_details(request, id):
     math = Math.objects.get(id=id)
@@ -111,3 +115,17 @@ def results_list(request):
             "form": form
         }
     )
+
+def search(request):
+	if request.method == "POST":
+		searched = request.POST['searched']
+		maths = Math.objects.filter(operation__contains=searched)
+	
+		return render(request, 
+		'maths/search.html', 
+		{'searched':searched,
+		'maths':maths})
+	else:
+		return render(request, 
+		'maths/search.html', 
+		{})

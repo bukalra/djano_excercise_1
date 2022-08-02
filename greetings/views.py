@@ -15,11 +15,11 @@ def welcome(request):
 def contact(request):
     return render(
         request=request,
-        template_name="greetings/main.html",
+        template_name="greetings/about.html",
         context=None)
 
 def about(request):
     return render(
         request=request,
-        template_name="greetings/main.html",
-        context=None)
+        template_name="greetings/contact.html",
+        context=None)    

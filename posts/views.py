@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from posts.models import Post, Author
 from posts.forms import PostForm, AuthorForm
+from django.contrib.auth.decorators import login_required
 
 
 """ def posts_list(request):
@@ -24,13 +25,15 @@ def posts_details(request, id):
         template_name="posts/details.html",
         context={"post": post, "author": author}
     )
-
+@login_required
 def posts_list(request):
     if request.method == "POST":
-        form = PostForm(data=request.POST)
+        form = PostForm(request.POST, request.FILES)
         print(f'*******{form}')
         if form.is_valid():
-            Post.objects.get_or_create(**form.cleaned_data)
+            print(form.cleaned_data)
+            p1 = Post.objects.create(title=form.cleaned_data['title'], content=form.cleaned_data['content'], author_id = form.cleaned_data['author_id'], image = request.FILES['image'])
+            
             messages.add_message(
                 request,
                 messages.SUCCESS,
@@ -40,14 +43,14 @@ def posts_list(request):
             messages.add_message(
                 request,
                 messages.ERROR,
-                form.errors['__all__']
+                form.errors
             )
 
     form = PostForm()
     posts = Post.objects.all()
     return render(
         request=request,
-        template_name="posts/list.html",
+        template_name="posts/posts_list.html",
         context={
             "posts": posts,
             "form": form

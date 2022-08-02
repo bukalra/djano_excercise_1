@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.urls import path
-
-from greetings.views import about, contact, welcome
+from django.views.generic import TemplateView
+from greetings.views import  welcome
 
 urlpatterns = [
     path('', welcome, name="welcome"),
-    path('about/', about, name="about"),
-    path('contact/', contact, name="contact"),
+    path('about/', TemplateView.as_view(template_name="greetings/about.html")),
+    path('contact/', TemplateView.as_view(template_name="greetings/contact.html")),
 ]

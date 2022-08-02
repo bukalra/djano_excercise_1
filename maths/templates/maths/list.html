@@ -1,4 +1,4 @@
-{% extends "maths/main.html" %}
+{% extends "main.html" %}
 
 {% block title %}Maths list{% endblock %}
 
@@ -40,59 +40,42 @@
                         {% endfor %}
                     </table>
                 </div>
-                <div class="pagination">
-                    <span class="step-links">
-                        {% if maths.has_previous %}
-                            <a href="?page=1">« first</a>
-                            <a href="?page={{ maths.previous_page_number }}">previous</a>
-                        {% endif %}
-                    
-                        <span class="current">
-                            Page {{ maths.number }} of {{ maths.paginator.num_pages }}.
-                        </span>
-                    
-                        {% if maths.has_next %}
-                            <a href="?page={{ maths.next_page_number }}">next</a>
-                            <a href="?page={{ maths.paginator.num_pages }}">last »</a>
-                        {% endif %}
-                    </span>
-                </div>        
 
                 <!--Pagination-->
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-          {% if movies.has_previous %}
-            <li class="page-item">
-              <a class="page-link" href="?page={{ maths.previous_page_number }}">Previous</a>
-            </li>
-          {% else %}
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Previous</a>
-            </li>
-          {% endif %}
-          {% for i in maths.paginator.page_range %}
-            {% if maths.number == i %}
-              <li class="page-item active" aria-current="page">
-                <span class="page-link">
-                  {{ i }}
-                  <span class="sr-only">(current)</span>
-                </span>
-              </li>
-            {% else %}
-              <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-            {% endif %}
-          {% endfor %}
-          {% if movies.has_next %}
-            <li class="page-item">
-              <a class="page-link" href="?page={{ maths.next_page_number }}">Next</a>
-            </li>
-          {% else %}
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Next</a>
-            </li>
-          {% endif %}
-        </ul>
-      </nav>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                    {% if movies.has_previous %}
+                        <li class="page-item">
+                        <a class="page-link" href="?page={{ maths.previous_page_number }}">Previous</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Previous</a>
+                        </li>
+                    {% endif %}
+                    {% for i in maths.paginator.page_range %}
+                        {% if maths.number == i %}
+                        <li class="page-item active" aria-current="page">
+                            <span class="page-link">
+                            {{ i }}
+                            <span class="sr-only">(current)</span>
+                            </span>
+                        </li>
+                        {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if movies.has_next %}
+                        <li class="page-item">
+                        <a class="page-link" href="?page={{ maths.next_page_number }}">Next</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Next</a>
+                        </li>
+                    {% endif %}
+                    </ul>
+                </nav>
       <!--end of Pagination-->
             </div>
             <div class="col-lg-6" style="font-size:xx-large">

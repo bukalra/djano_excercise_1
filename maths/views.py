@@ -6,6 +6,7 @@ from django.contrib import messages
 from maths.models import Math, Result
 from maths.forms import ResultForm
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 def math(request):
     return HttpResponse("Tu będzie matma")
@@ -64,6 +65,7 @@ def div(request, a, b):
         template_name="maths/operations.html",
         context=c)  
 
+@login_required
 def maths_list(request):
    maths = Math.objects.all()
    paginator = Paginator(maths, 5)

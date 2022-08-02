@@ -1,8 +1,9 @@
-{% extends "posts/main.html" %}
+{% extends "main.html" %}
 
 {% block title %}Posts list{% endblock %}
 
 {% block content %}
+{% load bootstrap4 %}
 
     <div class="container-fluid">
         <div class="row">
@@ -19,6 +20,7 @@
                               <th scope="col">Created</th>
                               <th scope="col">Modified</th>
                               <th scope="col">Author</th>
+                              <th scope="col">Image</th>
                             </tr>
                         </thead>
             
@@ -32,6 +34,7 @@
                                 <td style="vertical-align: middle;">{{ post.created }}</td>
                                 <td style="vertical-align: middle;">{{ post.modified }}</td>
                                 <td style="vertical-align: middle;">{{ post.author_id_id }}</td>
+                                <td style="vertical-align: middle;"><img src="{{ post.image.url }}"></td>
                             </tr>
                         </tbody>
                         {% endfor %}
@@ -39,12 +42,16 @@
                 </div>
             </div>
             <div class="col-lg-6" style="font-size:xx-large">
+                {% if perms.posts.add_post %}
+
                 <h1>Create a new post!</h1>
-                <form method="post">
+                <form method="POST" enctype='multipart/form-data'>
                     {% csrf_token %}
-                    {{ form.as_p }}
-                    <input type="submit" value="New post">
-                </form>            
+                    {% bootstrap_form form %}
+                    <input type="submit" value="Dodaj">
+                </form>
+                {% else %}
+                {% endif %}            
             </div>
         </div>
     </div>
